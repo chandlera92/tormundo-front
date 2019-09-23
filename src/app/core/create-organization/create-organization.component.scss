@@ -1,0 +1,81 @@
+@import "~scss/__colours";
+@import "~scss/__base";
+@import "~scss/__buttons";
+
+::ng-deep {
+  .mat-stepper-horizontal {
+    width: 100%;
+  }
+  .mat-step-icon {
+    color: white !important;
+  }
+  .mat-horizontal-stepper-header-container {
+  }
+}
+
+:host {
+/*  width: 100%;
+  height: 100%;
+  position: absolute;*/
+}
+
+.stepper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#stepper_container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100%;
+  .custom-mat-content-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .custom-mat-content-wrapper {
+      width: 80%;
+      .step-header-container {
+        text-align: center;
+        h1 {
+          font-size: 2rem;
+          line-height: 3.6rem;
+          margin-bottom: 0.5rem;
+        }
+        h3 {
+          font-size: 1.4rem;
+          line-height: 2.4rem;
+          margin-bottom: 2.4rem;
+          opacity: 0.8;
+          color: $main__dark_grey;
+        }
+      }
+      .step-body-container {
+        width: 80%;
+        margin: 0 auto 2rem auto;
+      }
+      .step-next-single {
+        justify-content: flex-end !important;
+      }
+      .step-next {
+        margin: 0 auto;
+        width: 80%;
+        border-top: 1px solid $main__light_grey;
+        display: flex;
+        justify-content: space-between;
+        padding: 1.2rem 0;
+        .step-back-container {
+          display: flex;
+          cursor: pointer;
+          .space-right {
+            margin-right: 0.4rem;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+

@@ -1,0 +1,30 @@
+#home__map__container {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  #home__map__graphic {
+    position: relative;
+    display: block;
+    width: 90%;
+    height: 600px;
+  }
+  #home__map__filters {
+    position: absolute;
+    display: block;
+    padding: 5px;
+    background-color: lightgray;
+    left: 5px;
+    bottom: 5px;
+    z-index: 999;
+
+  }
+}
+
+
+
+

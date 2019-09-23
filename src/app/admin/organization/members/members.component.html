@@ -1,0 +1,43 @@
+<mat-table #table [dataSource]="dataSource" *ngIf="ready" matSort>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="User">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>User name</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.user_name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Created by">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Created by</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.created_by}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Member for">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Member for <br/> (days)</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.created_at | dateToDays}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="blank">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let member">
+<!--
+      <span><i class="fal fa-edit fa-lg"></i></span>
+-->
+      <button mat-button>View</button>
+      <button mat-raised-button class="btn" color="primary" [routerLink]="member.id">Edit</button>
+      <button mat-raised-button class="btn" color="warn">Remove</button>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let member; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+<router-outlet></router-outlet>
+

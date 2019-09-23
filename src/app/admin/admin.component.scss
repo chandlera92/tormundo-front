@@ -1,0 +1,54 @@
+@import "~scss/__colours";
+
+#sidenav-content {
+  background-color: white;
+}
+
+#sidenav {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.05);
+  #sidenav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+  }
+  #sidenav-list {
+    .menu-item, .menu-title {
+      margin: 3px 0;
+    }
+    .menu-item {
+      .active {
+        background-color: $main__medium_green_fade;
+        color: $main__medium_green;
+      }
+      a {
+        display: block;
+        padding: 16px 25px;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        transition: all 0.2s ease;
+        &:hover {
+          color: $main__medium_green;
+        }
+        .menu-item-link-icon {
+          margin-left: 3px;
+          margin-right: 10px;
+        }
+        .menu-item-link-text {
+          margin-bottom: 2px;
+        }
+      }
+    }
+    .menu-title {
+      padding: 12px 25px;
+      font-size: 0.8rem;
+      color: $main__dark_grey;
+    }
+  }
+
+}

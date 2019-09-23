@@ -1,0 +1,36 @@
+@import "~scss/__colours";
+@import "~scss/__base";
+@import "~scss/__buttons";
+
+:host {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.component-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-content-frame {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  width: 400px;
+}
+
+.rounded-content-frame--white {
+  background-color: $main__white;
+  border-color: $main__light_grey;
+}
+
+.form-state-auth-custom {
+  width: calc(100% - 40px);
+}
+

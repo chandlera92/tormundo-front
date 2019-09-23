@@ -1,0 +1,85 @@
+<!--TODO: Fix group form errors. -->
+<!--TODO: Move country/language selection? -->
+<!--TODO: If you keep country/language, sort out API req error. Comes as Object Object in error modal-->
+<div class="component-wrapper">
+  <div class="rounded-content-frame rounded-content-frame--white">
+    <div class="form-state-container form-state-container-top form-state-auth-custom">
+      Have an account/order number? <a routerLinkActive="true" routerLink="../signin">Log in</a>
+    </div>
+    <div class="rounded-content-frame__content">
+      <form [formGroup]="signupForm" class="form-simple form-simple-flex-column" (ngSubmit)="onSignup()">
+        <h2 class="title">Sign up</h2>
+        <ul class="form-list">
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="User name" type="text" formControlName="user_name">
+              <mat-error>
+                <app-error [control]="signupForm.controls['user_name']"></app-error>
+              </mat-error>
+            </mat-form-field>
+          </li>
+          <li class="form-list-item" formGroupName="emails">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Email" type="email" formControlName="email">
+              <mat-error>
+                <app-error [control]="signupForm.controls['emails'].controls['email']"></app-error>
+              </mat-error>
+            </mat-form-field>
+          </li>
+          <li class="form-list-item" formGroupName="emails">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Re-enter email" type="email" formControlName="repeat">
+              <mat-error>
+                <app-error [control]="signupForm.controls['emails'].controls['repeat']"></app-error>
+              </mat-error>
+            </mat-form-field>
+          </li>
+          <app-error *ngIf="signupForm.controls['emails'].errors" class="form-group-error"
+                     [control]="signupForm.controls['emails']"></app-error>
+          <li class="form-list-item" formGroupName="passwords">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Password" type="password" name="password" formControlName="password">
+              <mat-error>
+                <app-error [control]="signupForm.controls['passwords'].controls['password']"></app-error>
+              </mat-error>
+            </mat-form-field>
+          </li>
+          <li class="form-list-item" formGroupName="passwords">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Re-enter password" type="password" name="password" formControlName="repeat">
+              <mat-error>
+                <app-error [control]="signupForm.controls['passwords'].controls['repeat']"></app-error>
+              </mat-error>
+              <mat-hint align="start">Password must be 6 characters long.</mat-hint>
+            </mat-form-field>
+          </li>
+          <app-error *ngIf="signupForm.controls['passwords'].errors" class="form-group-error"
+                     [control]="signupForm.controls['passwords']"></app-error>
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Select country" formControlName="country_id">
+                <mat-option *ngFor="let country of countries" [value]="country.id">
+                  {{ country.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </li>
+
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Select language" formControlName="language_id">
+                <mat-option *ngFor="let language of languages" [value]="language.id">
+                  {{ language.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </li>
+
+          <li class="form-list-item">
+            <button mat-raised-button color="primary" class="btn btn-full">Create account</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>

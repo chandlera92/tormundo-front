@@ -1,0 +1,34 @@
+<div class="item-edited-container" *ngIf="!createNewItem">
+  <h1 mat-dialog-title>Save changes</h1>
+  <div mat-dialog-content id="dialog-content">
+    <p>Save changes to current item?</p>
+  </div>
+
+  <div mat-dialog-actions id="dialog-actions" class="dialog-actions-flex-between">
+    <div class="dialog-actions-left">
+      <button (click)="onClose()" mat-raised-button class="btn" color="warn">Cancel and proceed</button>
+    </div>
+    <div class="dialog-actions-right">
+      <button (click)="onClose()" mat-raised-button class="btn" color="accent">Continue Editing</button>
+      <button (click)="onSubmit()" class="btn" mat-raised-button color="primary">Save changes and proceed</button>
+    </div>
+  </div>
+</div>
+
+<div class="add-new-item-container" *ngIf="createNewItem">
+  <h1 mat-dialog-title>Create new item</h1>
+  <div mat-dialog-content class="dialog-content">
+    <p>Create new item in selected language?</p>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions dialog-actions-flex-between">
+    <div class="dialog-actions-left">
+      <button (click)="onClose()" mat-raised-button class="btn" color="warn">Cancel and proceed</button>
+    </div>
+    <div class="dialog-actions-right">
+      <button (click)="onClose()" mat-raised-button class="btn" color="accent">Continue Editing</button>
+      <button (click)="onSubmitNewItem()" class="btn" mat-raised-button color="primary">Save changes and proceed</button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+:host {
+}
+
+#filter-options {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e4e4e4;
+  button {
+    margin: 0 0.5rem;
+  }
+  button:first-child {
+    margin-left: 0;
+  }
+
+  .button-gray-border {
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+  }
+
+}

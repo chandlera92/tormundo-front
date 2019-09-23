@@ -1,0 +1,65 @@
+<div id="profile-wrapper">
+  <div id="profile-header">
+    <div id="profile-header-left">
+      <h3>Organization Profile</h3>
+    </div>
+    <div id="profile-header-right">
+      <mat-form-field floatLabel="never">
+        <mat-select placeholder="Language" [value]="activeProfile.language_id">
+          <mat-option *ngFor="let language of languages" [value]="language.id">
+            {{language.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div id="profile-content">
+    <quill-editor class="full-width">
+      <div quill-editor-toolbar>
+      <span class="ql-formats">
+        <button class="ql-bold" [title]="'Bold'"></button>
+        <button class="ql-italic" [title]="'Italic'"></button>
+        <button class="ql-underline" [title]="'Underline'"></button>
+        <button class="ql-strike" [title]="'Strike'"></button>
+      </span>
+        <span class="ql-formats">
+        <button class="ql-blockquote" [title]="'Quote'"></button>
+      </span>
+        <div class="ql-formats">
+          <button class="ql-header" value="1"></button>
+          <button class="ql-header" value="2"></button>
+        </div>
+        <div class="ql-formats">
+          <button class="ql-list" value="ordered"></button>
+          <button class="ql-list" value="bullet"></button>
+        </div>
+        <span class="ql-formats">
+        <select class="ql-align" [title]="'Alignment'">
+          <option selected></option>
+          <option value="center"></option>
+          <option value="right"></option>
+          <option value="justify"></option>
+        </select>
+      </span>
+        <div class="ql-formats">
+          <i class="far fa-image fa-lg"></i>
+
+        </div>
+      </div>
+    </quill-editor>
+  </div>
+</div>
+
+<!--
+<button class="q" [title]="'Image'"></button>
+-->
+
+<div id="profile-footer">
+  <div id="profile-footer-left">
+    <mat-slide-toggle color="primary" [checked]="activeProfile.isPublic">Public</mat-slide-toggle>
+  </div>
+  <div id="profile-footer-right">
+    <button class="btn" mat-raised-button color="accent">Preview</button>
+    <button class="btn" mat-raised-button color="primary">Save Changes</button>
+  </div>
+</div>

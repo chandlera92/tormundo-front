@@ -1,0 +1,35 @@
+<div id="explore-container">
+  <div id="explore-search-container" (clickOutside)="onSearchClickedOutside($event)">
+    <div id="explore-input-container">
+      <div id="explore-icon">
+        <i class="fal fa-search"></i>
+      </div>
+      <div id="explore-search">
+        <input #exploreSearch (input)="onSearchInput($event)" (focus)="activateSearchNav = true" type="text"
+               placeholder='Search places or organizations..'>
+      </div>
+    </div>
+    <div *ngIf="activateSearchNav" id="explore-search-navigation">
+      <div id="explore-search-wrapper">
+        <div id="explore-search-queried" *ngIf="places">
+          <a class="search-list-item" *ngFor="let place of places; let i = index"
+             [attr.index]="i"
+             [ngClass]="{'search-list-item-hover': activeSearchListHover == i}"
+             (mouseover)="onSearchListItemHover($event)"
+
+          >
+                   <span class="search-icon">
+                            <i class="fas fa-map-marker-alt fa-lg"></i>
+                  </span>
+            <span class="search-text">
+                    {{place.description}}
+                  </span>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

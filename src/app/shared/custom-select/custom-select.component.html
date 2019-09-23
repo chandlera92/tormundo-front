@@ -1,0 +1,60 @@
+<div #customSelectMenu
+     [formGroup]="form"
+     (click)="toggleMenu()"
+     closeFromAnywhere="true"
+     [style.outline]="selectActivated == true ? '2px solid #39A712' : 'none'"
+     class="custom-select-box">
+  <!--     [ngClass]="{'inputError': showError(form.controls['type'], true) && blankBG == false}"
+-->
+  <div class="custom-select-menu">
+    <span>{{activeText}}</span>
+    <div class="select-custom-arrow">
+      <div class="icon" *ngIf="selectActivated == false">
+        <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="icon" *ngIf="selectActivated == true">
+        <i class="fa fa-caret-up"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div #customSelectList  class="custom-select-list"
+     [style.display]="selectActivated == true ? 'flex' : 'none'"
+>
+  <div *ngIf="search" class="select__search_container"><input type="text" class="select__search" (input)="filterData($event)"></div>
+
+  <ul>
+    <li *ngFor="let item of dynamicData"
+        (mouseover)="selectHoverState = true; enableSelectMenuHeaderBackground = false; this.activeOption = data.indexOf(item)"
+        (mouseout)="selectHoverState = false"
+        [ngClass]="{selected: activeOption == data.indexOf(item)}"
+        (click)="selectItem(data.indexOf(item))">
+      <span>{{item}}</span>
+    </li>
+
+
+
+<!--    <li class="disabled-option" closeFromAnywhere="true"
+        [ngClass]="{disabled__selected: activeOption == 0 && enableSelectMenuHeaderBackground == true }">
+      <span>I am a...</span>
+    </li>
+
+
+    <li class="active-option" closeFromAnywhere="true"
+        (mouseover)="selectHoverState = true; enableSelectMenuHeaderBackground = false; this.activeOption = 1"
+        (mouseout)="selectHoverState = false"
+        [ngClass]="{selected: activeOption == 1}" (click)="toggleMenu(1)"><span>Person</span>
+    </li>
+    <li class="active-option" closeFromAnywhere="true"
+        (mouseover)="selectHoverState = true; enableSelectMenuHeaderBackground = false; this.activeOption = 2"
+        (mouseout)="selectHoverState = false"
+        [ngClass]="{selected: activeOption == 2}" (click)="toggleMenu(2)"><span>Business</span>
+    </li>-->
+  </ul>
+</div>
+
+<!--
+<app-control-message [control]="form.controls['type']"></app-control-message>
+-->
+
+

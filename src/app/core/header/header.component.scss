@@ -1,0 +1,213 @@
+@import "~scss/master";
+
+.short-nav {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+ // float: right;
+  .nav-container-center {
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    a {
+      text-decoration: none;
+      color: white !important;
+    }
+  }
+}
+
+
+#global-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 80px;
+  // padding: 0.8rem;
+  border-bottom: 1px solid #e4e4e4;
+  //box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.2);
+  #nav-left {
+    display: flex;
+    #logo-container {
+      padding: 0 2rem;
+      #tormundo-logo {
+        color: $main__medium_green;
+        cursor: pointer;
+      }
+    }
+    #explore-container {
+      width: 100%;
+      #explore-search-container {
+        position: relative;
+        width: 500px;
+        #explore-input-container {
+          display: flex;
+          border: 1px solid #DBDBDB;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          #explore-icon {
+            padding: 0.8rem 1.2rem;
+            font-size: 1.8rem;
+          }
+          #explore-search {
+            width: 100%;
+            overflow: hidden;
+            input {
+              width: 100%;
+              border: 0px;
+              background-color: transparent;
+              font-size: 1.5rem;
+              padding: 0.8rem 0.5rem 0.8rem 0;
+              outline: none;
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+
+        #explore-search-navigation {
+          width: calc(100% - 6px);
+          left: 3px;
+          border: 1px solid #DBDBDB;
+          border-top: none;
+          position: absolute;
+          z-index: 9999;
+          background-color: #fff;
+          #explore-search-wrapper {
+            padding: 2rem;
+            #explore-search-empty {
+              header {
+                padding: 1rem 0;
+                font-weight: bold;
+              }
+            }
+            #explore-search-queried {
+              .search-list-item-hover {
+                background-color: $main__medium_green_fade;
+              }
+              a {
+                cursor: pointer;
+                padding: 0.8rem;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: black;
+                .search-icon {
+                  padding-right: 0.8rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #nav-right {
+    padding-right: 2rem;
+    display: flex;
+    height: 100%;
+    .with-border {
+      &:hover {
+        border-bottom-color: $main__black;
+      }
+    }
+    .nav-link-container {
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      .nav-link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: $main__black;
+      }
+    }
+    #nav-profileImg {
+      min-height: 80%;
+    }
+  }
+}
+
+.nav-container-center {
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  a {
+    text-decoration: none;
+    color: $main__dark_green;
+  }
+}
+
+a[class^="nav-item"] {
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  color: $main__black;
+  font-size: 1.2em;
+  border: 1px solid $main__dark_green;
+  border-radius: 0.5rem;
+
+}
+
+/* TODO: Global class for adding z-index? Fix position elements across board for readabilitly / simplicity. */
+
+#user-navigation-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 1.8rem;
+  margin-top: 0.2rem;
+  background-color: $main__white;
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  z-index: 999;
+
+  .user-navigation-header {
+    padding: 1rem 0.9rem 0.5rem 0.9rem;
+    h2 {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+
+  .user-navigation-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0.9rem;
+    margin-top: 20px;
+    border-top: 1px solid $main__light_grey;
+  }
+
+  #user-navigation-links {
+    display: flex;
+    .user-navigation-links-col {
+      padding: 0.9rem 0 1.8rem 0;
+      &:first-child {
+        .user-navigation-links-header, .user-navigation-links-list {
+          padding-left: 0.9rem;
+        }
+      }
+      .user-navigation-links-header {
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        padding: 0.9rem 3.6rem;
+      }
+      .user-navigation-links-list {
+        padding: 0 3.6rem;
+        font-size: 0.8rem;
+        li {
+          line-height: 1.5rem;
+        }
+      }
+    }
+
+  }
+
+}

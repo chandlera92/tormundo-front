@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+}
+
+#explore-body {
+  display: flex;
+  height: calc(100% - 71px);
+  #explore-left-container {
+    width: 66%;
+    padding: 1rem;
+  }
+  #explore-right-container {
+    width: 34%;
+    padding: 1rem;
+  }
+}
+

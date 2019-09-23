@@ -1,0 +1,71 @@
+<div id="basic-wrapper">
+  <form [formGroup]="cardForm">
+
+    <div id="basic-header">
+      <div id="basic-header-left">
+        <h3>Organization Basic Information</h3>
+      </div>
+      <div id="basic-header-right">
+        <mat-form-field floatLabel="never">
+          <mat-select (selectionChange)="updateRouteParams($event)" placeholder="Language"
+                      formControlName="language_id">
+            <mat-option [ngClass]="{'languageNotFound': !languagesInUse.includes(language.id)}"
+                        *ngFor="let language of languages" [value]="language.id">
+            <span class="option-text">
+              {{language.name}}
+            </span>
+              <span class="option-icon" *ngIf="!languagesInUse.includes(language.id)">
+              <i class="fal fa-plus-square fa-lg"></i>
+            </span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--
+        &lt;!&ndash;!checkIfLanguageExists(language.id)&ndash;&gt;
+    -->
+    <section id="basic-body">
+      <div id="basic-body-left">
+        <div id="basic-upload-container">
+          <app-admin-image-placeholder (imageChanged)="changeDisplayCardImage($event)"
+                                       [currentFile]="activeCard.file"></app-admin-image-placeholder>
+        </div>
+
+      </div>
+      <div id="basic-body-right">
+        <div class="basic-body-right-row">
+          <mat-form-field floatLabel="always" class="full-width">
+            <textarea (input)="updateDescription($event)" maxlength="135" formControlName="description" matInput
+                      placeholder="Organization Blurb"></textarea>
+            <span class="character_counter_container">
+            <span class="character_counter">
+              {{135 - cardForm.value.description.length}}/135
+            </span>
+          </span>
+          </mat-form-field>
+        </div>
+      </div>
+    </section>
+
+    <section id="basic-preview">
+      <div id="display-card-container">
+
+        <app-display-card [displayCard]="activeCard"></app-display-card>
+
+      </div>
+    </section>
+  </form>
+
+</div>
+
+
+<div id="basic-footer">
+  <div id="basic-footer-left">
+    <mat-slide-toggle color="primary" [checked]="true">Public</mat-slide-toggle>
+  </div>
+  <div id="basic-footer-right">
+    <button class="btn" type="button" mat-raised-button color="accent">Preview</button>
+    <button class="btn" type="button" mat-raised-button color="primary">Save Changes</button>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+:host {
+ // display: flex;
+  width: 100%;
+  //align-items: center;
+  //justify-content: space-around;
+}
+
+.list-entry-container {
+  display: inline-flex;
+  align-items: center;
+  width: 33.33%;
+  height: 200px;
+  padding: 8px;
+  .list-entry {
+    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+  }
+}

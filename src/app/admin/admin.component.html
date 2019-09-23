@@ -1,0 +1,92 @@
+<!-- USE BUTTONS INSTEAD OF LINKES FOR RIPPLE? -->
+
+<mat-sidenav-container *ngIf="(organization$ | async) as organization">
+  <mat-sidenav id="sidenav" #sidenav mode="side" opened="true" fixedInViewport="true">
+    <div id="sidenav-logo">{{organization.name}}</div>
+    <ul id="sidenav-list">
+      <li class="menu-title">Organization</li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'dashboard'">
+          <span class="menu-item-link-icon">
+              <i class="fal fa-tachometer fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'basic'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-info-square fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Basic
+          </span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'display-cards'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-address-card fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Display Cards
+          </span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'profiles'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-list-alt fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Profiles
+          </span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'members'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-users fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Members
+          </span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'accounts'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-comments fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Accounts
+          </span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a routerLinkActive="active" [routerLink]="'settings'">
+          <span class="menu-item-link-icon">
+            <i class="fal fa-cogs fa-fw fa-lg"></i>
+          </span>
+          <span class="menu-item-link-text">
+            Settings
+          </span>
+        </a>
+      </li>
+      <li class="menu-title">Projects</li>
+      <li class="menu-item">Dashboard</li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content id="sidenav-content">
+    <!--
+        <h1 (click)="sidenav.toggle()">TOGGLE ME</h1>
+    -->
+    <header>
+      <!--
+            <app-header></app-header>
+      -->
+    </header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

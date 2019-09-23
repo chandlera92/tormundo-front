@@ -1,0 +1,17 @@
+<div id="app_wrapper">
+  <div [hidden]="!HTTPActivity" class="progress-bar">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <header #header>
+    <app-header></app-header>
+  </header>
+
+  <section #mainContent id="main__content">
+    <router-outlet></router-outlet>
+  </section>
+
+  <!--<footer *ngIf="showFooter" #footer id="footer-container">
+    <app-footer></app-footer>
+  </footer>-->
+</div>

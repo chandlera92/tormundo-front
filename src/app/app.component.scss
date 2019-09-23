@@ -1,0 +1,29 @@
+@import "~scss/master";
+@import '../../node_modules/roboto-fontface/css/roboto/roboto-fontface.css';
+
+#main__content {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+#app_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  width: 100%;
+}
+
+/* TODO: Problem with footer. When you open the console the footer doesn't stick to the bottom of the page. */
+
+#footer-container {
+  height: auto;
+  display: block;
+}

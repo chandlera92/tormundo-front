@@ -1,0 +1,84 @@
+<div class="account-row">
+  <div id="account-left-container">
+    <form [formGroup]="modifyProfileForm" class="form-simple form-simple-flex-column">
+      <ul class="form-list">
+        <li class="form-list-item modify-account-list-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First name" type="text" formControlName="first_name">
+          </mat-form-field>
+        </li>
+        <li class="form-list-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last name" type="text" formControlName="last_name">
+          </mat-form-field>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div id="account-right-container">
+    <div class="img-container">
+      <div class="img">
+        <img [src]="activeImage" alt="">
+        <a (click)="activateChangePictureMenu = !activateChangePictureMenu" id="change-picture">Change picture</a>
+      </div>
+    </div>
+    <div id="picture-popup"
+         *ngIf="activateChangePictureMenu"
+         (clickOutside)="closePictureMenuOutsideClick($event)">
+      <h2>Change your picture</h2>
+      <div id="avatar-option-container">
+        <div class="avatar-option" (click)="revertToGravatar()">
+          <img height="50" width="50" [src]="profile.gravatar + '&s=50'">
+          <span class="avatar-text">Identicon</span>
+          <span class="avatar-icon" *ngIf="modifyProfileForm.value.gravatar_active"><i class="fal fa-check-circle fa-lg"></i></span>
+        </div>
+        <div class="avatar-option" *ngIf="modifyProfileForm.value.profile_image" (click)="revertToUploadImage()">
+          <img height="50" width="50" [src]="modifyProfileForm.value.profile_image">
+          <span class="avatar-text">Uploaded Picture</span>
+          <span class="avatar-icon" *ngIf="!modifyProfileForm.value.gravatar_active"><i class="fal fa-check-circle fa-lg"></i></span>
+        </div>
+      </div>
+      <div class="pp-buttons">
+        <button (click)="changeImage()" mat-raised-button color="primary" class="btn">Upload a new picture</button>
+        <button (click)="activateChangePictureMenu = !activateChangePictureMenu" mat-button>Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="account-row">
+  <quill-editor class="full-width">
+    <div quill-editor-toolbar>
+      <span class="ql-formats">
+        <button class="ql-bold" [title]="'Bold'"></button>
+        <button class="ql-italic" [title]="'Italic'"></button>
+        <button class="ql-underline" [title]="'Underline'"></button>
+        <button class="ql-strike" [title]="'Strike'"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-blockquote" [title]="'Quote'"></button>
+      </span>
+      <div class="ql-formats">
+        <button class="ql-header" value="1"></button>
+        <button class="ql-header" value="2"></button>
+      </div>
+      <div class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+      </div>
+      <span class="ql-formats">
+        <select class="ql-align" [title]="'Alignment'">
+          <option selected></option>
+          <option value="center"></option>
+          <option value="right"></option>
+          <option value="justify"></option>
+        </select>
+      </span>
+    </div>
+  </quill-editor>
+</div>
+
+<div class="account-row">
+  <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+</div>

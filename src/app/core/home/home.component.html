@@ -1,0 +1,27 @@
+<div id="home__map__container">
+  <div id="home__map__graphic">
+    <app-leaflet-map></app-leaflet-map>
+    <!-- Add Filters inside component? -->
+    <div id="home__map__filters">
+      <form [formGroup]="mapSearchForm" class="form-simple form-simple-flex-column">
+        <ul class="form-list">
+          <li class="form-list-item">
+<!--
+            <app-search-bar></app-search-bar>
+-->
+          </li>
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Select country" formControlName="country_id">
+                <mat-option *ngFor="let country of countries" [value]="country.id">
+                  {{ country.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+

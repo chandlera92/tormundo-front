@@ -1,0 +1,16 @@
+<agm-map #agmMap
+         [zoomControlOptions]="zoomControlOptions"
+         [streetViewControl]="false"
+         backgroundColor="#A4DDF5"
+         [styles]="mapStyles"
+         [latitude]="this.lat"
+         [longitude]="this.lng"
+         (mapReady)="mapReady($event)"
+>
+  <agm-marker *ngFor="let org of initData.organizations; let i = index"
+    [latitude]="org.lat"
+    [longitude]="org.lng"
+  >
+  </agm-marker>
+</agm-map>
+

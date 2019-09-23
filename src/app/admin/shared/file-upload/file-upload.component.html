@@ -1,0 +1,114 @@
+<div mat-dialog-title id="dialog-header">
+  <span>Pick/Upload new file.</span>
+  <div id="icn-close-container" (click)="onCloseCancel()">
+    <i class="fal fa-times-hexagon icn__general"></i>
+  </div>
+</div>
+
+<div id="content-container" mat-dialog-content>
+  <mat-tab-group (selectedTabChange)="activateUploadNewFile($event)" class="demo-tab-group"
+                 [selectedIndex]="uploadNewFile == true ? 0 : 1">
+    <mat-tab label="Upload New Image">
+      <div id="upload-new-image-container">
+        <div class="column">
+          <div id="upload-container"
+               [ngClass]="{'upload-container-active': imgSelected, 'upload-container-blank': !imgSelected}">
+            <div appUploadImage [uploadInput]="uploadInput" [imgSelected]="imgSelected" *ngIf="!imgSelected"
+                 id="dropzone">
+              <input #uploadInput type="file" accept="*" class="file-upload-input">
+              <div class="dropzone-text">
+                <h2>Drag and drop file or click here.</h2>
+                <p>to upload your file. (max 2MB).</p>
+              </div>
+            </div>
+            <div *ngIf="imgSelected" id="file-upload-content">
+              <img [src]="loc" class="file-upload-image">
+            </div>
+          </div>
+          <div *ngIf="imgSelected" id="cancel-image-container">
+            <span (click)="cancelUpload()" class="link__general">Cancel and add another image.</span>
+          </div>
+
+        </div>
+        <div class="column">
+          <form class="form-simple form-simple-flex-column" [formGroup]="uploadImageForm">
+            <ul class="form-list">
+              <li class="form-list-item mb1">
+                <mat-form-field class="full-width">
+                  <input type="text" formControlName="name" matInput
+                         placeholder="File name">
+                </mat-form-field>
+              </li>
+              <li class="form-list-item">
+
+                <mat-form-field class="full-width mb1">
+              <textarea maxlength="135" formControlName="description" matInput
+                        placeholder="File description" class="simple-textarea-no-resize-135"></textarea>
+                  <span class="character_counter_container">
+            <span class="character_counter">
+              {{135 - uploadImageForm.value.description.length}}/135
+            </span>
+          </span>
+                </mat-form-field>
+              </li>
+              <li class="form-list-item">
+
+                <mat-form-field class="full-width">
+                  <input type="text" formControlName="type" matInput
+                         placeholder="File type">
+                </mat-form-field>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Pick from exisiting files">
+      <div id="pick-file-container">
+        <mat-table *ngIf="ready" [dataSource]="fileTableDataSource" matSort>
+          <ng-container matColumnDef="file">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>File</mat-header-cell>
+            <mat-cell *matCellDef="let file">
+              <a [href]="file.loc">{{file.name}}</a>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let file">{{file.id}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let file">{{file.name}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef="let file">{{file.description}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+            <mat-cell *matCellDef="let file">{{file.type}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let file">
+              <button class="btn" mat-raised-button color="warn">Delete</button>
+              <button class="btn" mat-raised-button color="primary" (click)="onSelect(file, file.loc)">Select</button>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let file; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+<div mat-dialog-actions id="dialog-actions">
+  <button mat-button>Cancel</button>
+  <button *ngIf="uploadNewFile" (click)="onSubmit()" class="btn" mat-raised-button color="primary">Submit</button>
+</div>
+

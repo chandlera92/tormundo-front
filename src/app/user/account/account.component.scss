@@ -1,0 +1,24 @@
+@import '~scss/__colours';
+@import "~scss/__base";
+@import "~scss/__buttons";
+
+:host {
+  display: flex;
+}
+
+#account-left-container {
+  width: 50%;
+
+  .modify-account-list-item {
+    width: 80%;
+  }
+
+  .chng-pwd-btn {
+    margin-bottom: 10px;
+  }
+
+}
+
+#account-right-container {
+  width: 50%;
+}

@@ -1,0 +1,105 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="stepper-wrapper">
+  <div id="stepper_container">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Fill details</ng-template>
+        <div class="custom-mat-content-container" style="margin-top: 8rem">
+          <div class="custom-mat-content-wrapper">
+            <div class="step-header-container">
+              <h1>Tell us the name of your organization, and add a small description.</h1>
+              <h3>Don't worry, you can edit this later.</h3>
+            </div>
+            <div class="step-body-container">
+              <form [formGroup]="detailsForm" class="form-simple form-simple-flex-column">
+                <ul class="form-list">
+                  <li class="form-list-item">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Organization name" type="text" formControlName="name">
+                    </mat-form-field>
+                  </li>
+                  <li class="form-list-item">
+                    <mat-form-field class="full-width">
+                      <textarea matInput placeholder="Organization description..." rows="3"
+                                formControlName="description"></textarea>
+                    </mat-form-field>
+                  </li>
+                </ul>
+              </form>
+            </div>
+            <div class="step-next step-next-single">
+              <button [disabled]="!detailsForm.valid" color="primary" class="btn" mat-raised-button matStepperNext>
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Confirm eligibility</ng-template>
+        <div class="custom-mat-content-container" style="margin-top: 5rem">
+          <div class="custom-mat-content-wrapper">
+            <div class="step-header-container">
+              <h1>Finally, let’s confirm your eligibility.</h1>
+              <h3>Tell us where you’re based and confirm a few other details before we proceed.</h3>
+            </div>
+            <div class="step-body-container">
+              <form [formGroup]="eligibilityForm" class="form-simple form-simple-flex-column">
+                <ul class="form-list">
+                  <li class="form-list-item">
+                    <mat-form-field class="full-width">
+                      <mat-select placeholder="Select country" formControlName="country_id">
+                        <mat-option *ngFor="let country of countries" [value]="country.id">
+                          {{ country.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </li>
+
+                  <li class="form-list-item mb2">
+                    <mat-form-field class="full-width">
+                      <mat-select placeholder="Select language" formControlName="language_id">
+                        <mat-option *ngFor="let language of languages" [value]="language.id">
+                          {{ language.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </li>
+
+                  <li class="form-list-item">
+                    <mat-checkbox formControlName="check1" class="full-width-checkbox" color="primary">I am at least 18
+                      years old.
+                    </mat-checkbox>
+                  </li>
+
+                  <li class="form-list-item">
+                    <mat-checkbox formControlName="check2" class="full-width-checkbox" color="primary">I can verify a
+                      bank account and government-issued ID.
+                    </mat-checkbox>
+                  </li>
+
+                  <li class="form-list-item">
+                    <mat-checkbox formControlName="check3" class="full-width-checkbox" color="primary">My organization
+                      is officially recognised as an NGO/NPO from an world recognised government institution.
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </form>
+            </div>
+
+            <div class="step-next">
+              <span (click)="stepBack(stepper)" class="step-back-container">
+                 <i class="fal fa-long-arrow-alt-left space-right"></i>
+                 <p>Fill details</p>
+              </span>
+              <button (click)="createOrganization()" color="primary"
+                      [disabled]="!eligibilityForm.valid || !detailsForm.valid" class="btn" mat-raised-button>Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>

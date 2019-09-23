@@ -1,0 +1,9 @@
+@import "~scss/__colours";
+
+.link__general {
+  color: $general__link_blue;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

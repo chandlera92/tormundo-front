@@ -1,0 +1,36 @@
+<div id="icn-close-container-singular" (click)="onCloseCancel()">
+  <i class="fal fa-times-hexagon icn__general"></i>
+</div>
+
+<div id="upload-file-dialog" mat-dialog-content>
+  <div id="upload-container"
+       [ngClass]="{'upload-container-active': imgSelected, 'upload-container-blank': !imgSelected}" #uploadContainer>
+    <div *ngIf="!imgSelected" id="dropzone">
+      <input #uploadInput type="file" accept="image/*" (change)="readURL($event)" class="file-upload-input">
+      <div class="dropzone-text">
+        <h2>Drag and drop file or click here.</h2>
+        <p>to upload your image. (max 2MB).</p>
+      </div>
+    </div>
+    <div *ngIf="imgSelected" id="file-upload-content">
+      <img [src]="img" class="file-upload-image">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="imgSelected" id="cancel-image-container">
+  <span (click)="cancelUpload()" class="link__general">Cancel and add another image.</span>
+</div>
+
+<div id="upload-file-buttons">
+  <button mat-button (click)="onCloseCancel()">Cancel</button>
+  <button mat-raised-button color="primary" class="btn" [disabled]="imgSelected == false ? true : false" (click)="submitUpload()">Add
+    picture
+  </button>
+</div>
+
+
+<!--
+ (dragover)="dragOver()" (dragleave)="dragOut()"
+
+-->

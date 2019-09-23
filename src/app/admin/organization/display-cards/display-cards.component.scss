@@ -1,0 +1,107 @@
+@import "~scss/__colours";
+@import "~scss/__base";
+@import "~scss/__buttons";
+
+#basic-wrapper {
+  #basic-header {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100%);
+    background-color: white;
+    border-bottom: 1px solid #e4e4e4;
+    #basic-header-left {
+      width: calc(50% - 40px);
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #basic-header-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: calc(50% - 40px);
+      padding: 0 20px;
+      .languageNotFound {
+        background-color: red !important;
+      }
+    }
+  }
+
+  #basic-body {
+    padding: 2rem 0;
+    display: flex;
+    background-color: white;
+    #basic-body-left {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      #basic-upload-container {
+        width: 40%;
+        height: 200px;
+      }
+    }
+    #basic-body-right {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .basic-body-right-row {
+        width: 75%;
+        textarea {
+          resize: none;
+          height: 100px;
+        }
+        .character_counter_container {
+          position: absolute;
+          bottom: 12px;
+          right: 13px;
+          font-weight: bold;
+          color: $main__dark_grey;
+          .character_counter {
+
+          }
+        }
+      }
+    }
+  }
+
+  #basic-preview {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid #000;
+    margin-bottom: 80px;
+    background-color: white;
+    #display-card-container {
+      width: 400px;
+    }
+  }
+}
+
+#basic-footer {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 290px);
+  margin-left: 250px;
+  border-top: 1px solid #e4e4e4;
+  background-color: white;
+  z-index: 999;
+  padding: 20px;
+  #basic-footer-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+  #basic-footer-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  button {
+    margin: 0 0.5rem;
+  }
+}

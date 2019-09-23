@@ -1,0 +1,63 @@
+<section id="global-header" [ngClass]="{'short-nav': router.url.includes('admin')}">
+  <nav id="nav-left">
+    <div id="logo-container">
+      <a routerLink="" id="tormundo-logo">
+        <i class="fal fa-tree-alt fa-3x"></i>
+      </a>
+    </div>
+  </nav>
+  <nav id="nav-right">
+    <div class="nav-link-container with-border">
+      <a routerLink="create-organization" class="nav-link">Create organization</a>
+    </div>
+    <div class="nav-link-container" *ngIf="!authInfo.authenticated">
+      <a class="nav-item" routerLinkActive="active"
+         routerLink="signin">Connect</a>
+    </div>
+    <div class="nav-link-container">
+      <img id="nav-profileImg" [src]="authInfo.gravatar" *ngIf="authInfo.authenticated"
+           (click)="activateNavMenu = !activateNavMenu"/>
+    </div>
+
+  </nav>
+</section>
+
+
+<div (clickOutside)="onClickedOutside($event)" *ngIf="activateNavMenu" id="user-navigation-menu">
+  <header class="user-navigation-header">
+    <h2>{{authInfo.user_name}}</h2>
+  </header>
+  <div id="user-navigation-links">
+    <div class="user-navigation-links-col">
+      <header class="user-navigation-links-header">My Stuff</header>
+      <ul class="user-navigation-links-list"></ul>
+    </div>
+    <div class="user-navigation-links-col">
+      <header class="user-navigation-links-header">Settings</header>
+      <ul class="user-navigation-links-list">
+        <li *ngFor="let item of settingsUrl">
+          <a routerLinkActive="active" [routerLink]="item.url" (click)="activateNavMenu = false">{{item.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="user-navigation-links-col">
+      <header class="user-navigation-links-header">Organizations</header>
+      <ul class="user-navigation-links-list">
+        <li *ngFor="let org of authInfo.organizations">
+          <a routerLinkActive="active" [routerLink]="'../admin/' + org.name + '/dashboard'"
+             (click)="activateNavMenu = false">{{org.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <footer class="user-navigation-footer">
+    <button mat-button (click)="onLogout()">Log out</button>
+  </footer>
+</div>
+
+<!--
+<mat-menu #account="matMenu">
+  <button mat-menu-item routerLinkActive="active" routerLink="account">Account</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+-->

@@ -1,0 +1,34 @@
+#dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .icn__general {
+    cursor: pointer;
+  }
+}
+
+#dialog-content {
+  padding: 0px 24px 10px 24px;
+}
+
+.dialog-actions-flex-right {
+  justify-content: flex-end;
+}
+.dialog-actions-flex-between {
+  justify-content: space-between;
+}
+
+#dialog-actions {
+  display: flex;
+  align-items: center;
+  .dialog-actions-left {
+
+  }
+  .dialog-actions-right {
+
+  }
+  .dialog-button-custom-width-8rem {
+    min-width: 1%;
+    width: 8rem;
+  }
+}

@@ -1,0 +1,41 @@
+<!-- TODO: Must be auxiliary route -->
+
+<div mat-dialog-title>Verify Account</div>
+<div mat-dialog-content id="content-grid">
+  <div id="description">
+    We have sent a temporary verification code to 'email here'. Enter the code to verify your account.
+  </div>
+
+  <div id="input-container">
+    <div id="input-title">
+      <h1>Verification Code:</h1>
+    </div>
+    <div id="inputs-row">
+      <form [formGroup]="codeForm" (ngSubmit)="verifyAccount()">
+        <input (keypress)="testKey($event)" maxlength='1' type="text" formControlName="character__1">
+        <input maxlength='1' type="text" formControlName="character__2">
+        <input maxlength='1' type="text" formControlName="character__3">
+        <input maxlength='1' type="text" formControlName="character__4">
+        <input maxlength='1' type="text" formControlName="character__5">
+        <input maxlength='1' type="text" formControlName="character__6">
+      </form>
+    </div>
+    <div class="api-error" *ngIf="error">{{message}}</div>
+  </div>
+</div>
+<div mat-dialog-actions id="dialog-actions">
+  <div id="left-actions">
+    <a class="link__general">
+      <span class="link-icon">
+        <i class="fal fa-sync-alt"></i>
+      </span>
+      <span class="link" (click)="sendNewCode()">
+        Send a new code
+      </span>
+    </a>
+  </div>
+  <div id="right-actions">
+    <button mat-button (click)="onCloseCancel()">Later</button>
+    <button mat-raised-button color="primary" class="btn" (click)="verifyAccount()">Verify</button>
+  </div>
+</div>

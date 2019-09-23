@@ -1,0 +1,15 @@
+<div id="image-placeholder">
+  <div id="image-placeholder-empty" *ngIf="!file">
+    <button (click)="openModal($event, true)" class="btn" mat-raised-button color="primary">Upload new file</button>
+    <button (click)="openModal($event, false)" class="btn" mat-raised-button color="accent">Choose existing file
+    </button>
+  </div>
+  <div (click)="openModal($event, false)" id="image-placeholder-fill" *ngIf="file">
+    <div id="image-container">
+      <img [src]="file.loc" alt="">
+    </div>
+    <div id="image-overlay">
+      <p>Change Image</p>
+    </div>
+  </div>
+</div>

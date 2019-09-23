@@ -1,0 +1,37 @@
+<div class="component-wrapper">
+  <div class="rounded-content-frame rounded-content-frame--white">
+    <div class="rounded-content-frame__content">
+      <form [formGroup]="signinForm" class="form-simple form-simple-flex-column" (ngSubmit)="onSignin()">
+        <h2 class="title">Log in</h2>
+        <ul class="form-list">
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Email" type="email" formControlName="email">
+              <mat-error>
+                <app-error [control]="signinForm.controls['email']"></app-error>
+              </mat-error>
+            </mat-form-field>
+          </li>
+          <li class="form-list-item">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Password" type="password" name="password" formControlName="password">
+              <mat-error>
+                <app-error [control]="signinForm.controls['password']"></app-error>
+              </mat-error>
+            </mat-form-field>
+            <a class="link__general" (click)="activateForgotPasswordDialog()">Forgotten your password?</a>
+          </li>
+
+
+          <li class="form-list-item">
+            <button mat-raised-button color="primary" class="btn btn-full">Log me in!</button>
+          </li>
+        </ul>
+      </form>
+
+    </div>
+    <div class="form-state-container form-state-auth-custom form-state-container-bottom">
+      New to Tormundo? <a routerLinkActive="active" routerLink="../signup">Sign up!</a>
+    </div>
+  </div>
+</div>

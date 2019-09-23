@@ -1,0 +1,14 @@
+@import "~scss/master";
+
+/* TODO: Switch margin top to host element? */
+
+#footer {
+  padding: 20px;
+  border-top: 1px solid $main__black;
+}
+
+.short-footer {
+  width: calc(100% - 290px);
+  margin-left: 290px;
+  float: right;
+}
